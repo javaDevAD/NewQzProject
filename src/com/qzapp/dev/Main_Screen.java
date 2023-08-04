@@ -17,6 +17,7 @@ public class Main_Screen
 		System.out.println();
 		
 		System.out.println("Who are you?");
+		System.out.println();
 		System.out.println("1.Student");
 		System.out.println("2.Admin/Faculty");
 		
