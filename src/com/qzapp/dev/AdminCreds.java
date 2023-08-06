@@ -35,7 +35,7 @@ public class AdminCreds {
 		}
 		else
 		{
-			System.out.println(" Incorrect Username or Passsword");
+			System.out.println("Incorrect Username or Passsword");
 			
 				return false;
 		}
