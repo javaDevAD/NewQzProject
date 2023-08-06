@@ -16,10 +16,6 @@ public class AdminOperations {
 	static String l_name;
 	static int score;
 	
-	
-	
-	
-	
 	public static void getAllStudentScore()
 	{
 		
@@ -119,38 +115,85 @@ public class AdminOperations {
 	}
 	
 	
-	public static void addNewQuestionInDB()
+	public static void addNewQuestionInDB(int times)
 	{
+		AdminOperations adding = new AdminOperations();
 		Scanner sc= new Scanner(System.in);
-		
+		for(int i = 0; i<times; i++) {
+//		System.out.println("Let's start, press Enter");
+//		String start=sc.next( );
+			
 		System.out.println("Please enter question");
-		String que=sc.nextLine();
-		
+		String que=sc.nextLine();;
+
 		System.out.println("Enter 1st option");
-		String opt1=sc.nextLine();;
+		String opt1=sc.nextLine();
 		
 		System.out.println("Enter 2nd option");
-		String opt2= sc.nextLine();;
+		String opt2= sc.nextLine();
 		
 		System.out.println("Enter 3rd option");
-		String opt3= sc.nextLine();;
+		String opt3= sc.nextLine();
 		
 		System.out.println("Enter 4th option");
-		String opt4= sc.nextLine();;
+		String opt4= sc.nextLine();
 		
 		System.out.println("WHich one correct? 1,2,3,4 ?");
 		int c=sc.nextInt();
-		String query="insert into questions(question, option_a, option_b, option_c, option_d,correctOption) values(?,?,?,?,?,?) ";
+		adding.enterNewQuestion(que, opt1, opt2, opt3, opt4, c);
+		}
+//		String query="insert into questions(question, option_a, option_b, option_c, option_d,correctOption) values(?,?,?,?,?,?) ";
 		
+//		public void enterNewQuestion(String question, String opt1, String opt2, String opt3, String opt4, int correct_opt){
+//		try {
+//			con= DBConnection.getDBConnection();
+//			ps=con.prepareStatement(query);
+//			
+//			ps.setString(1, question);
+//			ps.setString(2, opt1);
+//			ps.setString(3, opt2);
+//			ps.setString(4, opt3);
+//			ps.setString(5, opt4);
+//			ps.setInt(6, correct_opt);
+//			int executeUpdate = ps.executeUpdate();
+//			
+//			
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		finally
+//		{
+//			try {
+//				
+//				ps.close();
+//				con.close();
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			
+//		}
+//		}
+		
+	}
+
+
+
+
+	private void enterNewQuestion(String question, String opt1, String opt2, String opt3, String opt4, int correct_opt) {
 		try {
+			String query="insert into questions(question, option_a, option_b, option_c, option_d,correctOption) values(?,?,?,?,?,?) ";
 			con= DBConnection.getDBConnection();
 			ps=con.prepareStatement(query);
-			ps.setString(1, que);
+			
+			ps.setString(1, question);
 			ps.setString(2, opt1);
 			ps.setString(3, opt2);
 			ps.setString(4, opt3);
 			ps.setString(5, opt4);
-			ps.setInt(6, c);
+			ps.setInt(6, correct_opt);
 			int executeUpdate = ps.executeUpdate();
 			
 			
@@ -170,8 +213,12 @@ public class AdminOperations {
 				e.printStackTrace();
 			}
 			
-			
 		}
 		
 	}
+
+
+
+
+	
 }

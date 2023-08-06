@@ -41,13 +41,13 @@ public class Registration {
 		}
 		
 		System.out.println("Please enter Mobile Number :");
-		String mob=sc.next();
+		long mob=sc.nextLong();
 		
 		userDataInsert(firstName,lastName,userName,password,city,mailId,mob);
 
 	}
 	
-	public static void userDataInsert(String firstName,String lastName,String userName,String password,String city,String mailId,String mob) throws ClassNotFoundException
+	public static void userDataInsert(String firstName,String lastName,String userName,String password,String city,String mailId,long mob) throws ClassNotFoundException
 	{
 		try {
 		
@@ -63,7 +63,7 @@ public class Registration {
 		ps.setString(4,password);
 		ps.setString(5,city);
 		ps.setString(6,mailId);
-		ps.setString(7,mob);
+		ps.setLong(7,mob);
 		
 		int i = ps.executeUpdate();
 		System.out.println("!!! Registration Successfull !!!");
